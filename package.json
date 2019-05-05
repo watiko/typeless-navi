@@ -30,7 +30,7 @@
     "_prettier": "prettier *.js \"src/**/*.{ts,tsx,json,css,scss}\"",
     "prettier-check": "npm run _prettier -- --list-different",
     "prettier-format": "npm run _prettier -- --write",
-    "eslint": "eslint *.js \"src/**/*.{ts,tsx}\"",
+    "eslint": "eslint \"src/**/*.{ts,tsx}\"",
     "eslint-fix": "npm run eslint -- --fix",
     "format": "run-s prettier-format eslint-fix",
     "format-check": "run-p prettier-check eslint"
