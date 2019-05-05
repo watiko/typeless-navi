@@ -1,5 +1,5 @@
 import { createActions } from 'typeless';
-import { RouteEntry } from 'types';
+import { RouteEntry } from '@/types';
 import { lazy } from 'navi';
 
 // --- Constants ---

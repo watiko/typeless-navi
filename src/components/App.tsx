@@ -4,7 +4,7 @@ import { initialize } from 'typeless';
 import { Router, View } from 'react-navi';
 
 import { Layout } from './Layout';
-import { routes } from '../routes';
+import { routes } from '@/routes';
 
 const { TypelessProvider } = initialize();
 

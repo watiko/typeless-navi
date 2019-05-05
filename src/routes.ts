@@ -1,4 +1,4 @@
-import { RouteEntry } from './types';
+import { RouteEntry } from '@/types';
 import { mount } from 'navi';
 
 const req = require.context('./features', true, /interface.tsx?$/);
