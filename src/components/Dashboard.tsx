@@ -38,8 +38,8 @@ export const Dashboard = ({ children }: Props) => {
       <Header>
         <AppName>Starter</AppName>
         <Links>
-          <Link href="/">top</Link>
-          <Link href="/delayed">delayed</Link>
+          <Link href="/">sample1</Link>
+          <Link href="/sample2">sample2</Link>
         </Links>
         <button onClick={() => console.log('logout')}>logout</button>
       </Header>
