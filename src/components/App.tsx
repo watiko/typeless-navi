@@ -1,31 +1,26 @@
 import React, { Suspense } from 'react';
+import { initialize } from 'typeless';
 
 import { Router, View } from 'react-navi';
-import { mount, route } from 'navi';
+import { mount, lazy } from 'navi';
 
 import { Layout } from './Layout';
 
-const routes = mount({
-  '/': route({
-    title: '',
-    view: <>top </>,
-  }),
-  '/delayed': route(async _req => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+const { TypelessProvider } = initialize();
 
-    return {
-      title: 'delayed',
-      view: <div>delayed view!</div>,
-    };
-  }),
+const routes = mount({
+  '/': lazy(() => import('features/sample1/routes')),
+  '/sample2': lazy(() => import('features/sample2/routes')),
 });
 
 export const App = () => (
-  <Router routes={routes}>
-    <Suspense fallback={null}>
-      <Layout>
-        <View />
-      </Layout>
-    </Suspense>
-  </Router>
+  <TypelessProvider>
+    <Router routes={routes}>
+      <Suspense fallback={null}>
+        <Layout>
+          <View />
+        </Layout>
+      </Suspense>
+    </Router>
+  </TypelessProvider>
 );
