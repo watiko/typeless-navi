@@ -6,7 +6,7 @@ export const Sample1View = () => {
     <>
       Feature sample1
       <br />
-      <Link href="/sample2">Go to sample feature 2 (set "slow 3G" to see a spinner)</Link>
+      <Link href="/sample2">Go to sample feature 2 (set &quot;slow 3G&quot; to see a spinner)</Link>
     </>
   );
 };
