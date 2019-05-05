@@ -1,5 +1,6 @@
 import React from 'react';
 import { createEpic, createReducer, useModule } from 'typeless';
+
 import { Sample2View } from './components/Sample2View';
 import { MODULE, Sample2Actions, Sample2State } from './interface';
 

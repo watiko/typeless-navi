@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
 import { initialize } from 'typeless';
-
 import { Router, View } from 'react-navi';
 
+import { routes } from '@app/routes';
+
 import { Layout } from './Layout';
-import { routes } from '@/routes';
 
 const { TypelessProvider } = initialize();
 

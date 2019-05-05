@@ -1,6 +1,7 @@
 import { createActions } from 'typeless';
 import { lazy } from 'navi';
-import { RouteEntry } from '@/types';
+
+import { RouteEntry } from '@app/types';
 
 // --- Constants ---
 export const MODULE = 'sample1';

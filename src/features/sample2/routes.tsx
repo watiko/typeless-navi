@@ -1,6 +1,7 @@
 import React from 'react';
-import { Sample2Module } from './module';
 import { mount, route } from 'navi';
+
+import { Sample2Module } from './module';
 
 export default mount({
   '/': route({

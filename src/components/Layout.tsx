@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLoadingRoute } from 'react-navi';
-import { Dashboard } from './Dashboard';
-
 import { GuardSpinner } from 'react-spinners-kit';
+
+import { Dashboard } from './Dashboard';
 
 interface Props {
   children: React.ReactNode;

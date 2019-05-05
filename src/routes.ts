@@ -1,5 +1,6 @@
-import { RouteEntry } from '@/types';
 import { mount } from 'navi';
+
+import { RouteEntry } from '@app/types';
 
 const req = require.context('./features', true, /interface.tsx?$/);
 
