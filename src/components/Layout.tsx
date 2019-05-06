@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLoadingRoute } from 'react-navi';
-import { GuardSpinner } from 'react-spinners-kit';
 
 import { Dashboard } from './Dashboard';
+import { Spinner } from './Spinner';
 
 interface Props {
   children: React.ReactNode;
@@ -13,9 +13,7 @@ export const Layout = ({ children }: Props) => {
 
   return (
     <div>
-      <Dashboard>
-        {!loadingRoute ? children : <GuardSpinner size={60} frontColor="black" backColor="white" />}
-      </Dashboard>
+      <Dashboard>{!loadingRoute ? children : <Spinner />}</Dashboard>
     </div>
   );
 };
