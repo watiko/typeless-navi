@@ -12,14 +12,18 @@ import { LoginActions, LoginState, MODULE } from './interface';
 import { LoginView } from './components/LoginView';
 
 // --- Epic ---
-export const epic = createEpic(MODULE).on(LoginActions.login, ({ form }) => {
+export const epic = createEpic(MODULE).on(LoginActions.login, ({ form }, { getState }) => {
   return Rx.concatObs(
     Rx.of(LoginActions.setLoading(true)),
     Rx.of(LoginActions.setError('')),
     login(form.username, form.password).pipe(
       Rx.map(({ user, token }) => {
         setAccessToken(token);
-        return batchUpdate([GlobalActions.loggedIn(user), RouterActions.navigate('/')]);
+
+        const redirectTo = getState().router.location!.url.query['redirectTo'];
+        const url = !redirectTo ? '/' : decodeURIComponent(redirectTo);
+
+        return batchUpdate([GlobalActions.loggedIn(user), RouterActions.navigate(url)]);
       }),
       catchLog(e => Rx.of(LoginActions.setError(e.message))),
     ),
