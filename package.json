@@ -16,6 +16,7 @@
     "react-scripts": "3.0.0",
     "react-spinners-kit": "^1.9.0",
     "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "rxjs": "^6.5.1",
     "styled-components": "^4.2.0",
     "typeless": "0.0.18",
