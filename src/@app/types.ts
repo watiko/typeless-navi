@@ -1,6 +1,6 @@
 import { Matcher } from 'navi';
 
-type AppContext = {}; // TODO
+export type AppContext = {}; // TODO
 
 export interface RouteEntry<
   Context extends object = AppContext,
@@ -8,4 +8,9 @@ export interface RouteEntry<
 > {
   path: string;
   routes: Matcher<Context, ChildContext>;
+}
+
+export interface User {
+  id: string;
+  name: string;
 }

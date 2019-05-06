@@ -1,6 +1,6 @@
-import { mount } from 'navi';
+import { createBrowserNavigation, mount } from 'navi';
 
-import { RouteEntry } from '@app/types';
+import { AppContext, RouteEntry } from '@app/types';
 
 const req = require.context('../features', true, /interface.tsx?$/);
 
@@ -19,4 +19,5 @@ const resolveRoutes = () => {
   return mount(matcherEntry);
 };
 
-export const routes = resolveRoutes();
+const routes = resolveRoutes();
+export const navigation = createBrowserNavigation<AppContext>({ routes });
