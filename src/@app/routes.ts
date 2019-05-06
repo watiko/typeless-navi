@@ -23,9 +23,12 @@ const routes = resolveRoutes();
 export const navigation = createBrowserNavigation<AppContext>({ routes });
 
 export function withAuthentication(matcher: Matcher<AppContext>) {
-  return map<AppContext>((request, context) =>
-    context.user
+  return map<AppContext>(async (request, context) => {
+    // wait for global state
+    await context.isLoadedAsync;
+
+    return context.user
       ? matcher
-      : redirect('/login?redirectTo=' + encodeURIComponent(request.mountpath + request.search)),
-  );
+      : redirect('/login?redirectTo=' + encodeURIComponent(request.mountpath + request.search));
+  });
 }

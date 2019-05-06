@@ -2,6 +2,7 @@ import { Matcher } from 'navi';
 
 export interface AppContext {
   user: User | null;
+  isLoadedAsync: Promise<void>;
 }
 
 export interface RouteEntry<

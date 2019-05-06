@@ -23,11 +23,13 @@ export const epic = createEpic(MODULE)
 // --- Reducer ---
 const initialState: GlobalState = {
   user: null,
+  isLoaded: false,
 };
 
 export const reducer = createReducer(initialState)
   .on(GlobalActions.loggedIn, (state, { user }) => {
     state.user = user;
+    state.isLoaded = true;
   })
   .on(GlobalActions.logout, state => {
     state.user = null;
