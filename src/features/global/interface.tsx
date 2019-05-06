@@ -15,6 +15,7 @@ export const GlobalActions = createActions(MODULE, {
 // --- Types ---
 export interface GlobalState {
   user: User | null;
+  isLoaded: boolean;
 }
 
 declare module 'typeless/types' {
