@@ -43,5 +43,6 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    'import/namespace': 'off', // false-positive for `import * as Rx from 'typless/rx'`
   },
 };
