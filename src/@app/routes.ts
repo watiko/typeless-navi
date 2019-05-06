@@ -2,7 +2,7 @@ import { mount } from 'navi';
 
 import { RouteEntry } from '@app/types';
 
-const req = require.context('./features', true, /interface.tsx?$/);
+const req = require.context('../features', true, /interface.tsx?$/);
 
 const resolveRoutes = () => {
   const targetModules = req.keys().map(key => req(key));
