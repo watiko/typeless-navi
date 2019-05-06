@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-navi';
-// import { useActions } from 'typeless';
+import { useActions, useMappedState } from 'typeless';
+
+import { GlobalActions } from 'features/global/interface';
 
 const Header = styled.div`
   display: flex;
@@ -32,7 +34,9 @@ interface Props {
 }
 
 export const Dashboard = ({ children }: Props) => {
-  //  const { logout } = useActions(GlobalActions);
+  const { logout } = useActions(GlobalActions);
+  const user = useMappedState(state => state.global.user);
+
   return (
     <>
       <Header>
@@ -41,7 +45,7 @@ export const Dashboard = ({ children }: Props) => {
           <Link href="/">sample1</Link>
           <Link href="/sample2">sample2</Link>
         </Links>
-        <button onClick={() => console.log('logout')}>logout</button>
+        {user ? <button onClick={logout}>logout</button> : <Link href="/login">login</Link>}
       </Header>
       <Main>{children}</Main>
     </>

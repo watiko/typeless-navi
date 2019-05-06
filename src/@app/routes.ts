@@ -1,4 +1,4 @@
-import { createBrowserNavigation, mount } from 'navi';
+import { createBrowserNavigation, mount, Matcher, map, redirect } from 'navi';
 
 import { AppContext, RouteEntry } from '@app/types';
 
@@ -16,8 +16,16 @@ const resolveRoutes = () => {
     return { ...acc, ...{ [routeEntry.path]: routeEntry.routes } };
   }, {});
 
-  return mount(matcherEntry);
+  return mount<AppContext>(matcherEntry);
 };
 
 const routes = resolveRoutes();
 export const navigation = createBrowserNavigation<AppContext>({ routes });
+
+export function withAuthentication(matcher: Matcher<AppContext>) {
+  return map<AppContext>((request, context) =>
+    context.user
+      ? matcher
+      : redirect('/login?redirectTo=' + encodeURIComponent(request.mountpath + request.search)),
+  );
+}

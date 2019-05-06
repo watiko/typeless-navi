@@ -1,6 +1,8 @@
 import { Matcher } from 'navi';
 
-export type AppContext = {}; // TODO
+export interface AppContext {
+  user: User | null;
+}
 
 export interface RouteEntry<
   Context extends object = AppContext,
@@ -12,5 +14,10 @@ export interface RouteEntry<
 
 export interface User {
   id: string;
-  name: string;
+  username: string;
 }
+
+export type GrommetFormEvent<T> = React.FormEvent<HTMLFormElement> & {
+  value: T;
+};
+export type GrommetFormHandler<T> = React.EventHandler<GrommetFormEvent<T>>;
