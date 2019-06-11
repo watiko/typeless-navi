@@ -1,25 +1,18 @@
-import { createActions } from 'typeless';
-
+import { createModule } from 'typeless';
 import { User } from '@app/types';
 
-// --- Constants ---
-export const MODULE = 'global';
+import { GlobalSymbol } from './symbol';
 
-// --- Actions ---
-export const GlobalActions = createActions(MODULE, {
-  $mounted: null,
-  logout: null,
-  loggedIn: (user: User | null) => ({ payload: { user } }),
-});
+export const [handle, GlobalActions, getGlobalState] = createModule(GlobalSymbol)
+  .withActions({
+    $mounted: null,
+    logout: null,
+    loggedIn: (user: User | null) => ({ payload: { user } }),
+  })
+  .withState<GlobalState>();
 
 // --- Types ---
 export interface GlobalState {
   user: User | null;
   isLoaded: boolean;
-}
-
-declare module 'typeless/types' {
-  export interface DefaultState {
-    global: GlobalState;
-  }
 }

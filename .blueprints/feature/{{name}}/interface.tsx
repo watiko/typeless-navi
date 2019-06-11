@@ -1,13 +1,12 @@
-import { createActions } from 'typeless';
+import { createModule } from 'typeless';
 import { lazy } from 'navi';
-
 import { RouteEntry } from '@app/types';
 
-// --- Constants ---
-export const MODULE = '{{name}}';
+import { {{pascalCase name}}Symbol } from './symbol';
 
-// --- Actions ---
-export const {{pascalCase name}}Actions = createActions(MODULE, {});
+export const [handle, {{pascalCase name}}Actions, get{{pascalCase name}}State] = createModule({{pascalCase name}}Symbol)
+  .withActions({})
+  .withState<{{pascalCase name}}State>();
 
 // --- Routing ---
 export const routeEntry: RouteEntry = {
@@ -17,9 +16,3 @@ export const routeEntry: RouteEntry = {
 
 // --- Types ---
 export interface {{pascalCase name}}State {}
-
-declare module 'typeless/types' {
-  export interface DefaultState {
-    {{name}}: {{pascalCase name}}State;
-  }
-}

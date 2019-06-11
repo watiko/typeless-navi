@@ -1,10 +1,8 @@
-import { createEpic, createReducer, useModule } from 'typeless';
 import * as Rx from 'typeless/rx';
 import { Route } from 'navi';
-
 import { navigation } from '@app/routes';
 
-import { RouterActions, RouterState, MODULE, RouterLocation } from './interface';
+import { RouterActions, RouterState, handle, RouterLocation } from './interface';
 
 const toRouterLocation = (route: Route): RouterLocation => {
   const { url, state } = route;
@@ -18,7 +16,8 @@ const emitLocationChageIfNeeded = (route: Route, fn: (location: RouterLocation) 
 };
 
 // --- Epic ---
-export const epic = createEpic(MODULE)
+handle
+  .epic()
   .on(
     RouterActions.$mounted,
     () =>
@@ -43,19 +42,10 @@ const initialState: RouterState = {
   prevLocation: null,
 };
 
-export const reducer = createReducer(initialState).on(
-  RouterActions.locationChange,
-  (state, payload) => {
-    state.prevLocation = state.location;
-    state.location = payload;
-  },
-);
+handle.reducer(initialState).on(RouterActions.locationChange, (state, payload) => {
+  state.prevLocation = state.location;
+  state.location = payload;
+});
 
 // --- Module ---
-export const useRouterModule = () =>
-  useModule({
-    epic,
-    reducer,
-    reducerPath: ['router'],
-    actions: RouterActions,
-  });
+export const useRouterModule = handle;

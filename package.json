@@ -16,11 +16,9 @@
     "react-navi": "^0.12.7",
     "react-scripts": "3.0.1",
     "react-spinners-kit": "^1.9.0",
-    "redux": "^4.0.1",
-    "redux-logger": "^3.0.6",
     "rxjs": "^6.5.2",
     "styled-components": "^4.3.1",
-    "typeless": "~0.0.21",
+    "typeless": "^1.0.0",
     "typescript": "3.5.1"
   },
   "scripts": {

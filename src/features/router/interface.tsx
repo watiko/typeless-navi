@@ -1,15 +1,15 @@
-import { createActions } from 'typeless';
+import { createModule } from 'typeless';
 import { URLDescriptor } from 'navi';
 
-// --- Constants ---
-export const MODULE = '@@router';
+import { RouterSymbol } from './symbol';
 
-// --- Actions ---
-export const RouterActions = createActions(MODULE, {
-  $mounted: null,
-  navigate: (url: RouterNavigation) => ({ payload: { url } }),
-  locationChange: (data: RouterLocation) => ({ payload: data }),
-});
+export const [handle, RouterActions, getRouterState] = createModule(RouterSymbol)
+  .withActions({
+    $mounted: null,
+    navigate: (url: RouterNavigation) => ({ payload: { url } }),
+    locationChange: (data: RouterLocation) => ({ payload: data }),
+  })
+  .withState<RouterState>();
 
 // --- Types ---
 export type RouterNavigation = string | Partial<URLDescriptor>;
@@ -21,10 +21,4 @@ export interface RouterLocation {
 export interface RouterState {
   location: RouterLocation | null;
   prevLocation: RouterLocation | null;
-}
-
-declare module 'typeless/types' {
-  export interface DefaultState {
-    router: RouterState;
-  }
 }

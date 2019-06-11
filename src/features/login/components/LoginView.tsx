@@ -1,14 +1,13 @@
 import React from 'react';
-import { useActions, useMappedState } from 'typeless';
+import { useActions } from 'typeless';
 import { Text, Button, Form, FormField } from 'grommet';
-
 import { GrommetFormHandler } from '@app/types';
 
-import { LoginActions } from '../interface';
+import { LoginActions, getLoginState } from '../interface';
 
 export const LoginView = () => {
   const { login } = useActions(LoginActions);
-  const loginError = useMappedState(state => state.login.error);
+  const { error: loginError } = getLoginState.useState();
 
   const handleSubmit: GrommetFormHandler<{
     username: string;
