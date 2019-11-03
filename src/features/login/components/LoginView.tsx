@@ -1,20 +1,17 @@
 import React from 'react';
 import { useActions } from 'typeless';
 import { Text, Button, Form, FormField } from 'grommet';
-import { GrommetFormHandler } from '@app/types';
 
-import { LoginActions, getLoginState } from '../interface';
+import { LoginActions, getLoginState, LoginFormValue } from '../interface';
 
 export const LoginView = () => {
   const { login } = useActions(LoginActions);
   const { error: loginError } = getLoginState.useState();
 
-  const handleSubmit: GrommetFormHandler<{
-    username: string;
-    password: string;
-  }> = e => {
+  // TODO: use formik
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    login(e.value);
+    login(e.value as LoginFormValue);
   };
 
   return (

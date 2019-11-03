@@ -17,8 +17,3 @@ export interface User {
   id: string;
   username: string;
 }
-
-export type GrommetFormEvent<T> = React.FormEvent<HTMLFormElement> & {
-  value: T;
-};
-export type GrommetFormHandler<T> = React.EventHandler<GrommetFormEvent<T>>;
