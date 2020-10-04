@@ -15,7 +15,7 @@ export const [handle, RouterActions, getRouterState] = createModule(RouterSymbol
 export type RouterNavigation = string | Partial<URLDescriptor>;
 export interface RouterLocation {
   url: URLDescriptor;
-  state?: object;
+  state?: Record<string, any>;
 }
 
 export interface RouterState {

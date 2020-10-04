@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Rx from 'typeless/rx';
+
 import { catchLog } from '@app/rx';
 import { login } from 'services/API';
 import { setAccessToken } from 'services/Storage';
@@ -18,6 +19,7 @@ handle.epic().on(LoginActions.login, ({ form }) => {
       Rx.mergeMap(({ user, token }) => {
         setAccessToken(token);
 
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const redirectTo = getRouterState().location!.url.query['redirectTo'];
         const url = !redirectTo ? '/' : decodeURIComponent(redirectTo);
 

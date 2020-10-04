@@ -1,5 +1,6 @@
 import React, { Suspense, useRef } from 'react';
 import { Router, View } from 'react-navi';
+
 import { navigation } from '@app/routes';
 import { defer, Deffered } from '@app/defer';
 import { useRouterModule } from 'features/router/module';

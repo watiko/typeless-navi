@@ -6,8 +6,8 @@ export interface AppContext {
 }
 
 export interface RouteEntry<
-  Context extends object = AppContext,
-  ChildContext extends object = Context
+  Context extends AppContext = AppContext,
+  ChildContext extends AppContext = Context
 > {
   path: string;
   routes: Matcher<Context, ChildContext>;

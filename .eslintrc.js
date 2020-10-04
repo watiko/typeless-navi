@@ -25,6 +25,14 @@ module.exports = {
       typescript: {},
     },
   },
+  overrides: [
+    {
+      files: ['**/*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+      },
+    },
+  ],
   rules: {
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render as renderDOM, unmountComponentAtNode } from 'react-dom';
 import { Hmr, startHmr, DefaultTypelessProvider } from 'typeless';
 
 import * as serviceWorker from './serviceWorker';
@@ -11,9 +11,9 @@ if (!MOUNT_NODE) {
 }
 
 const render = () => {
-  const App = require('./components/App').App;
-  ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-  ReactDOM.render(
+  const App = require('./components/App').App; // eslint-disable-line
+  unmountComponentAtNode(MOUNT_NODE);
+  renderDOM(
     <Hmr>
       <DefaultTypelessProvider>
         <App />

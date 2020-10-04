@@ -1,6 +1,6 @@
 import { createBrowserNavigation, mount, Matcher, map, redirect } from 'navi';
 
-import { AppContext, RouteEntry } from '@app/types';
+import type { AppContext, RouteEntry } from '@app/types';
 
 const req = require.context('../features', true, /interface.tsx?$/);
 
@@ -22,7 +22,7 @@ const resolveRoutes = () => {
 const routes = resolveRoutes();
 export const navigation = createBrowserNavigation<AppContext>({ routes });
 
-export function withAuthentication(matcher: Matcher<AppContext>) {
+export function withAuthentication(matcher: Matcher<AppContext>): Matcher<AppContext, AppContext> {
   return map<AppContext>(async (request, context) => {
     // wait for global state
     await context.isLoadedAsync;
