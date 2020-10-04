@@ -1,5 +1,6 @@
 import { createModule } from 'typeless';
 import { lazy } from 'navi';
+
 import { RouteEntry } from '@app/types';
 
 import { Sample1Symbol } from './symbol';

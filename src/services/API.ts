@@ -1,8 +1,17 @@
+import type { Observable } from 'rxjs';
 import * as Rx from 'typeless/rx';
+
+export type User = {
+  id: string;
+  username: string;
+};
 
 const sampleUser = { id: 'a', username: 'user' };
 
-export const login = (username: string, password: string) =>
+export const login = (
+  username: string,
+  password: string,
+): Observable<{ user: User; token: string }> =>
   Rx.of({ user: sampleUser, token: '123' }).pipe(
     Rx.delay(300),
     Rx.map(user => {
@@ -13,4 +22,4 @@ export const login = (username: string, password: string) =>
     }),
   );
 
-export const getUser = () => Rx.of(sampleUser).pipe(Rx.delay(300));
+export const getUser = (): Observable<User> => Rx.of(sampleUser).pipe(Rx.delay(300));

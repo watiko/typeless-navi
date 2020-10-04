@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-navi';
 import { useActions } from 'typeless';
+
 import { GlobalActions, getGlobalState } from 'features/global/interface';
 
 const Header = styled.div`

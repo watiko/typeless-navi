@@ -1,5 +1,6 @@
 import * as Rx from 'typeless/rx';
 import { Route } from 'navi';
+
 import { navigation } from '@app/routes';
 
 import { RouterActions, RouterState, handle, RouterLocation } from './interface';

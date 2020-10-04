@@ -1,4 +1,5 @@
 import { createModule } from 'typeless';
+
 import { User } from '@app/types';
 
 import { GlobalSymbol } from './symbol';
